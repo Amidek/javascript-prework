@@ -3,14 +3,29 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Kamień, papier, nożyce</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 	<div class="container">
-		<div id="buttons"></div>
-		<div id="messages"></div>
-	</div>
-	<script src="js/functions.js"></script>
+		<div id="buttons" class="buttons">
+			<div id="rock" class="button">
+				<span><i class="fas fa-hand-rock"></i></span>
+			</div>
+			<div id="paper" class="button">
+				<i class="fas fa-hand-paper"></i>
+			</div>
+			<div id="scissors" class="button">
+				<span><i class="fas fa-hand-scissors"></i></span>
+			</div>
+		</div>
+		<div id="messages">
+		</div>
+		<div id="result">
+			<div id="player-result" class="result">0</div>
+			<span> : </span>
+			<div id="computer-result" class="result">0</div>
+		</div>
 	<script src="js/script.js"></script>
 </body>
 </html>

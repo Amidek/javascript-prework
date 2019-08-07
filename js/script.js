@@ -1,4 +1,4 @@
-const scissors = document.getElementById('scissors');
+{const scissors = document.getElementById('scissors');
 const paper = document.getElementById('paper');
 const stone = document.getElementById('stone');
 const playerResult = document.getElementById('player-result');
@@ -32,7 +32,7 @@ scissors.addEventListener('click', function () {
 });
 
 function printMessage(msg){
-	var div = document.createElement('div');
+	let div = document.createElement('div');
 	div.innerHTML = msg;
 	document.getElementById('messages').appendChild(div);
 }
@@ -41,17 +41,62 @@ function clearMessages(){
 	document.getElementById('messages').innerHTML = '';
 }
 
-function getMoveName(argMoveId){
-  if(argMoveId == 1){
+const getMoveName = function (moveId){
+  if(moveId == 1){
     return 'kamień';
-  } else if(argMoveId == 2){
+  } else if(moveId == 2){
     return 'papier';
-  } else if(argMoveId == 3){
+  } else if(moveId == 3){
     return 'nożyce';
   }
 }
+const displayResult = function (computerMove, playerMove){
+	clearMessages();
+	printMessage('Zagrałem ' + computerMove + ', a Ty ' + playerMove);
+	switch(playerMove) {
+			case 'kamień':
+					if (computerMove === 'kamień') {
+						printMessage('Remis!');
+						return 'draw';
+					}
+					if (computerMove === 'papier') {
+						printMessage('Wygrywa komputer!');
+						return 'computer';
+					}
+					if (computerMove === 'nożyce') {
+						printMessage('Wygrywasz!');
+						return 'player';
+					}
+			case 'papier':
+					if (computerMove === 'kamień') {
+						printMessage('Wygrywasz!');
+						return 'player';
+					}
+					if (computerMove === 'papier') {
+						printMessage('Remis!');
+						return 'draw';
+					}
+					if (computerMove === 'nożyce') {
+						printMessage('Wygrywa komputer!');
+						return 'computer';
+					}
+			case 'nożyce':
+					if (computerMove === 'kamień') {
+						printMessage('Wygrywa komputer!');
+						return 'computer';
+					}
+					if (computerMove === 'papier') {
+						printMessage('Wygrywasz!');
+						return 'player';
+					}
+					if (computerMove === 'nożyce') {
+						printMessage('Remis!');
+						return 'draw';
+					}
+	}
 
-function displayResult(computerMove, playerMove){
+}
+/* function displayResult(computerMove, playerMove){
 	clearMessages();
   printMessage('Zagrałem ' + computerMove + ', a Ty ' + playerMove);
   if(computerMove =='kamień' && playerMove =='papier'){
@@ -77,8 +122,8 @@ function displayResult(computerMove, playerMove){
 		return 'computer';
   }
 }
-
-function randomComputerMove() {
+*/
+const randomComputerMove = function () {
   const randomNumber = Math.floor(Math.random() * 3 + 1);
   console.log('Komputer wylosował: ' + randomNumber + ' czyli: ' + getMoveName(randomNumber));
   switch (randomNumber) {
@@ -108,3 +153,4 @@ const displayCount = function(winner) {
 					break;
 	}
 };
+}
